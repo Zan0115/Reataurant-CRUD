@@ -44,9 +44,16 @@ app.post('/restaurants', (req, res) => {
     rating: req.body.rating,
     description: req.body.description
   })
-
   return restaurant.save()
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant: restaurant }))
     .catch(error => console.log(error))
 })
 
