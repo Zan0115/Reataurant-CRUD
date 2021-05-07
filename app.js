@@ -41,6 +41,7 @@ app.post('/restaurants', (req, res) => {
     image: req.body.image,
     location: req.body.location,
     phone: req.body.phone,
+    google_map: req.body.google_map,
     rating: req.body.rating,
     description: req.body.description
   })
@@ -49,11 +50,40 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// show頁面路由
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('show', { restaurant: restaurant }))
+    .catch(error => console.log(error))
+})
+
+// edit頁面路由
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant: restaurant }))
+    .catch(error => console.log(error))
+})
+
+// 接住edit表單資料的路由
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)  // 查詢資料
+    .then(restaurant => { // 如果查詢成功，修改後儲存資料。
+      restaurant.name = req.body.name,
+      restaurant.category = req.body.category,
+      restaurant.image = req.body.image,
+      restaurant.location = req.body.location,
+      restaurant.phone = req.body.phone,
+      restaurant.google_map = req.body.google_map,
+      restaurant.rating = req.body.rating,
+      restaurant.description = req.body.description
+      return restaurant.save()  // 注意前面不能加.lean()，否則無法用.save()方法
+    })
+    .then(() => res.redirect(`/restaurants/${id}`)) // 如果儲存成功，重新導向頁面
     .catch(error => console.log(error))
 })
 
