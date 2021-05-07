@@ -1,6 +1,7 @@
 # :hamburger: 我的餐廳清單 :hamburger:
 ### 一個可以讓你建立最愛餐廳清單的網站。
 
+![image](https://raw.githubusercontent.com/Zan0115/Reataurant-CRUD/master/%E9%A6%96%E9%A0%81%E5%9C%96.PNG)
 ## :pencil2: 功能
 
 - 使用者可以在首頁看到所有餐廳與它們的簡單資料：
@@ -16,6 +17,8 @@
   - 圖片
 - 使用者可以透過搜尋餐廳名稱或種類來找到特定的餐廳
 - 使用者可自行新增、修改、刪除餐廳
+
+![image](https://raw.githubusercontent.com/Zan0115/Reataurant-CRUD/master/%E5%BB%BA%E7%AB%8B%E8%A1%A8%E5%96%AE%E5%9C%96.PNG)
 
 ## 使用步驟
 1. 打開你的 terminal，Clone 此專案至本機電腦
