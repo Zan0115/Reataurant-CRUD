@@ -68,8 +68,24 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.buttons {
+  margin-right: 100px;
+}
+
+@media screen and (max-width: 992px) {
+  .buttons {
+    margin-right: 0px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;
   }
+
 }
+
+@media screen and (max-width: 575px) {
+
+}
+

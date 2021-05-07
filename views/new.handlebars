@@ -1,12 +1,44 @@
+<link rel="stylesheet" href="/stylesheets/edit.css">
+
 {{!-- 用 POST 方法，把資料送給 /restaurants 位置 --}}
-<form action="/restaurants" method="POST">
-  <input type="text" placeholder="name" name="name">
-  <input type="text" placeholder="category" name="category">
-  <input type="text" placeholder="image" name="image">
-  <input type="text" placeholder="location" name="location">
-  <input type="text" placeholder="phone" name="phone">
-  <input type="text" placeholder="google_map" name="google_map">
-  <input type="text" placeholder="rating" name="rating">
-  <input type="text" placeholder="description" name="description">
-  <button type="submit">Create</button>
+<form action="/restaurants" method="POST" class="basic-grey">
+  <h1>Create New Restaurant
+    <span>Please fill all the texts in the fields.</span>
+  </h1>
+  <label>
+    <span>name :</span>
+    <input type="text" placeholder="name" name="name">
+  </label>
+  <label>
+    <span>category :</span>
+    <input type="text" placeholder="category" name="category">
+  </label>
+  <label>
+    <span>image :</span>
+    <input type="text" placeholder="image" name="image">
+  </label>
+  <label>
+    <span>location :</span>
+    <input type="text" placeholder="location" name="location">
+  </label>
+  <label>
+    <span>phone :</span>
+    <input type="text" placeholder="phone" name="phone">
+  </label>
+  <label>
+    <span>google_map :</span>
+    <input type="text" placeholder="google_map" name="google_map">
+  </label>
+  <label>
+    <span>rating :</span>
+    <input type="text" placeholder="rating" name="rating">
+  </label>
+  <label>
+    <span>description :</span>
+    <textarea class="input-description" type="text" placeholder="description"
+      name="description"></textarea>
+  </label>
+  <div class="d-flex">
+    <button class="btn btn-primary ml-auto mr-2" type="submit">Create</button>
+  </div>
 </form>

@@ -9,12 +9,6 @@
           <i class="fas fa-utensils pr-2"></i>
           類別：{{ restaurant.category }}
         </span>
-        
-        <a href="/restaurants/{{ restaurant._id }}/edit" class="">edit</a>
-        <a href="/">back</a>
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
-          <button type="submit">delete</button>
-        </form>
       </p>
       <p class="mb-1">
         <span class="text-secondary">
@@ -39,5 +33,15 @@
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}"
         style="max-width: 600px;">
     </div>
+  </div>
+
+  <div class="buttons d-flex mb-5">
+    <a class="btn btn-outline-primary ml-auto mr-2" href="/restaurants/{{ restaurant._id }}/edit">edit</a>
+
+    <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+      <button type="submit" class="btn btn-outline-danger mr-2">delete</button>
+    </form>
+
+    <a href="/" class="btn btn-outline-dark">back</a>
   </div>
 </div>
