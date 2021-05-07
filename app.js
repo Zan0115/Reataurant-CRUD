@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
+const restaurant = require('./models/restaurant')
 
 const app = express()
 const port = 3000
@@ -74,24 +75,39 @@ app.post('/restaurants/:id/edit', (req, res) => {
   return Restaurant.findById(id)  // 查詢資料
     .then(restaurant => { // 如果查詢成功，修改後儲存資料。
       restaurant.name = req.body.name,
-      restaurant.category = req.body.category,
-      restaurant.image = req.body.image,
-      restaurant.location = req.body.location,
-      restaurant.phone = req.body.phone,
-      restaurant.google_map = req.body.google_map,
-      restaurant.rating = req.body.rating,
-      restaurant.description = req.body.description
+        restaurant.category = req.body.category,
+        restaurant.image = req.body.image,
+        restaurant.location = req.body.location,
+        restaurant.phone = req.body.phone,
+        restaurant.google_map = req.body.google_map,
+        restaurant.rating = req.body.rating,
+        restaurant.description = req.body.description
       return restaurant.save()  // 注意前面不能加.lean()，否則無法用.save()方法
     })
     .then(() => res.redirect(`/restaurants/${id}`)) // 如果儲存成功，重新導向頁面
     .catch(error => console.log(error))
 })
 
+// 刪除的路由
 app.post('/restaurants/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// 搜尋的路由
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  Restaurant.find({
+    "$or": [
+      { "name": { $regex: `${keyword}`, $options: '$i' } },
+      { "category": { $regex: `${keyword}`, $options: '$i' } }
+    ]
+  })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
     .catch(error => console.log(error))
 })
 
