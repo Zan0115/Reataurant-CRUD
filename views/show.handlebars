@@ -11,6 +11,10 @@
         </span>
         
         <a href="/restaurants/{{ restaurant._id }}/edit" class="">edit</a>
+        <a href="/">back</a>
+        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+          <button type="submit">delete</button>
+        </form>
       </p>
       <p class="mb-1">
         <span class="text-secondary">

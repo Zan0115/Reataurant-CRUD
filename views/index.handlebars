@@ -37,8 +37,21 @@
               {{ this.rating }}
               <i class="fas fa-star fa-xs"></i>
             </span>
-            <a href="./restaurants/{{ this._id }}/edit">edit</a>
-            <a href="">delete</a>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+
+            <a href="./restaurants/{{ this._id }}/edit">
+              <button>
+                <i class="fas fa-edit"></i>
+              </button>
+            </a>
+
+            <form action="./restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+              <button>
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </form>
+
           </div>
         </div>
         {{/each}}
