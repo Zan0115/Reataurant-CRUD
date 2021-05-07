@@ -23,7 +23,7 @@
 ## 使用步驟
 1. 打開你的 terminal，Clone 此專案至本機電腦
 ```
-git clone https://github.com/Zan0115/My-Restaurant-List.git
+git clone https://github.com/Zan0115/Reataurant-CRUD.git
 ```
 2. 在終端機上安裝 npm 套件
 ```
